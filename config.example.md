@@ -21,6 +21,9 @@ output_path: TODO_PATH_TO_OUTPUT_FOLDER       # Beispiel Obsidian: 00_Daily_Note
 brand_voice_ref: TODO_PATH_TO_BRAND_VOICE_FILE  # Beispiel: brand-voice.md im Repo-Root
 
 geo: DE                   # für Google Trends, z.B. DE, CH, US, AT (mehrere mit Komma)
+
+# OPTIONAL: Wo Run-Logs gespeichert werden. Default: <output_path>/scout-runs.jsonl
+# scout_log_path: ./logs/scout-runs.jsonl
 ```
 
 ## Keyword-Quellen (Cascade)

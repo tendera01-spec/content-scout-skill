@@ -2,7 +2,7 @@
 name: content-scout
 description: |
   Täglicher (oder wöchentlicher) Content-Scout. Liest RSS-Feeds (z.B. Google Alerts), Branchenquellen und Trend-Signale. Filtert nach konfigurierten Themen, prüft SEO-Relevanz via Keyword/Trend-Check und draftet fertige Post-Entwürfe (LinkedIn, X, Blog) im Brand-Voice des Users. Themen-agnostisch über `config.md`. Triggert bei: "content scout", "neues posten", "content drafts", "was kann ich posten", "trend check".
-argument-hint: "[fokus-thema, optional]"
+argument-hint: "[fokus-thema | setup]"
 ---
 
 # Content Scout (v2, generisch)
@@ -13,8 +13,9 @@ Aus Marktsignalen (RSS, Web, Trends) tägliche oder wöchentliche Post-Drafts pr
 
 ## Phase 0: Setup laden
 
-1. `config.md` aus demselben Ordner laden (`05_System/skills/content-scout/config.md`).
-   - Wenn nicht vorhanden: User auf `config.example.md` hinweisen, abbrechen.
+1. `config.md` aus demselben Ordner laden.
+   - **Wenn nicht vorhanden ODER User-Argument ist `setup`:** lade `SETUP_WIZARD.md` aus demselben Ordner und folge dem Wizard-Ablauf. Wizard schreibt am Ende `config.md`. Danach mit Schritt 2 weitermachen.
+   - Wenn vorhanden: lesen und parsen.
 2. Master-Rules laden, sofern im Vault vorhanden (`05_System/_about/master-rules.md`). Wenn nicht vorhanden: weiter.
 3. Brand-Referenz aus Config laden (z.B. `brand.md`).
 
@@ -204,7 +205,12 @@ Keine vollständige Wiederholung. Detail in der Datei.
 
 ## Phase 7: Logging
 
-1. Wenn `05_System/memory/` existiert: kurzen Run-Log nach `05_System/memory/scout-runs.jsonl` schreiben:
+1. Run-Log schreiben nach Pfad in dieser Reihenfolge:
+   - Wenn `scout_log_path` in Config gesetzt: dort
+   - Sonst wenn `05_System/memory/` existiert (Obsidian-Vault-Setup): `05_System/memory/scout-runs.jsonl`
+   - Sonst Default: `{output_path}/scout-runs.jsonl`
+
+   Format:
    ```json
    {"timestamp":"...", "items_scanned":N, "drafts_produced":N, "top_keyword":"...", "keyword_sources_used":["ahrefs","trends"], "fallback_only":false}
    ```

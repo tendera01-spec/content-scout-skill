@@ -2,18 +2,34 @@
 
 Tägliche Post-Drafts aus RSS-Feeds (z.B. Google Alerts), Branchenquellen und Trend-Signalen. Themen-agnostisch über `config.md`. Für Claude (Cowork, Claude Code, Obsidian-Vault-Setups).
 
-## Quick-Start (5 Minuten)
+## Schnellster Start: der Wizard
 
-Drei Dinge die du anpassen musst, dann läuft der Skill:
+Du musst NICHTS manuell konfigurieren. Der Skill bringt einen Setup-Wizard mit, der dich in 6 bis 8 Fragen durch die Konfiguration führt.
 
-1. **`config.md` anlegen** Kopiere `config.example.md` oder eines aus `examples/` zu `config.md`
-2. **3 Pfade ersetzen** in `config.md`:
-   - `output_path` Wohin Drafts geschrieben werden (z.B. `00_Daily_Notes` bei Obsidian, oder `./content-drafts` bei reinem Claude Code)
-   - `brand_voice_ref` Pfad zu einer Datei mit deinem Schreibstil (Tone, Verbots-Wörter, Beispiele). Wenn du keine hast: leg eine `brand-voice.md` an, 10 Zeilen reichen
+So gehts:
+
+1. Repo klonen oder Files in deinen Skill-Ordner kopieren
+2. Im Chat schreiben: `content scout setup`
+3. Fragen beantworten (Use Case, Sprache, Markt, Channels, etc.)
+4. Wizard schreibt `config.md` und optional `brand-voice.md` automatisch
+5. Fertig. Skill mit `content scout` starten
+
+Der Wizard erkennt automatisch ob du Obsidian benutzt oder reines Claude Code, schlägt passende Pfade vor, und bietet 4 Themen-Presets zur Auswahl (AI Security, UX Design & Solo Founder, Marketing & Growth, Sales & B2B) plus Custom.
+
+Wenn du beim ersten Mal `content scout` (ohne `setup`) schreibst und keine `config.md` existiert: Wizard startet automatisch.
+
+## Manuelles Setup (falls bevorzugt)
+
+Wenn du lieber YAML editierst statt Wizard zu benutzen:
+
+1. `config.md` anlegen: Kopiere `config.example.md` oder eines aus `examples/` zu `config.md`
+2. Drei Pfade ersetzen:
+   - `output_path` Wohin Drafts geschrieben werden
+   - `brand_voice_ref` Pfad zu einer Datei mit deinem Schreibstil
    - `sources` Google-Alert-Feed-URLs (Setup unten)
-3. **RSS-Feeds besorgen** Google Alerts auf "Feed" statt "E-Mail" umstellen (Anleitung unten), URLs in `config.md` eintragen
+3. RSS-Feeds besorgen: Google Alerts auf "Feed" statt "E-Mail" umstellen, URLs eintragen
 
-Dann im Chat: `content scout` und der Skill läuft.
+Dann im Chat: `content scout`.
 
 ## Was der Skill macht
 
