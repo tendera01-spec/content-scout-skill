@@ -1,0 +1,16 @@
+# User-spezifische Config nicht versionieren
+config.md
+
+# Output und Logs
+00_Daily_Notes/
+scout-runs.jsonl
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
